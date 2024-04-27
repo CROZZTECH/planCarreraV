@@ -1,0 +1,2 @@
+ng build  --configuration=production --aot
+aws s3 sync dist/plan-carrera-v/browser/ s3://argosplancarrera  --cache-control "no-store"

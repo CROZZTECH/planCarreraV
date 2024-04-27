@@ -1,0 +1,103 @@
+
+<app-header></app-header>
+
+<form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+    <label>
+        Trabajo:
+        <select formControlName="job">
+          
+            @for (item of options; track item) {
+                <option [value]="item.POSITION">
+                    {{item.POSITION}}
+                </option>
+              }
+          
+        </select>
+      </label>
+
+      <label>
+        Compañía:
+        <select formControlName="company">
+            @for (item of options; track item) {
+              @if (item.POSITION === getJobValue()) {
+                <option [value]="item.COMPANY" >
+                    {{item.COMPANY}}
+                </option>
+              }
+              }
+        </select>
+      </label>
+      <label>
+        Entidad:
+        <select formControlName="entity">
+            @for (item of options; track item) {
+                @if (item.POSITION === getJobValue()) {
+                    <option [value]="item.ENTITY" >
+                        {{item.ENTITY}}
+                    </option>
+                }
+              }
+        </select>
+      </label>
+
+      <h3>Competencias técnicas</h3>
+      
+      <div formArrayName="TechniquesLevel1">
+        <table  class="table">
+        @for (field of TechniquesLevel1.controls; track field; let index = $index) {
+          
+            <tr  [formGroupName]="index">
+              <td >
+                <label>
+                  Técnica:
+                </label>
+                <input formControlName="name">
+              </td>
+              <td >
+                <label>
+                  Nivel:
+                </label>
+                <select formControlName="level">
+                  <option value="Nivel 1">Nivel 1</option>
+                  <option value="Nivel 2">Nivel 2</option>
+                  <option value="Nivel 3">Nivel 3</option>
+                </select>
+              </td>
+              <td >
+                <button type="button" (click)="removeTechniquesLevel1(index)">Eliminar </button>
+              </td>
+            </tr>
+          
+        }
+      </table>
+     </div>
+     <button type="button"  class="myButton" (click)="addTechniquesLevel1()">Agregar Nivel </button>
+
+    
+
+     
+
+    <h3>Competencias blandas</h3>
+
+  
+    <div formArrayName="softLevel1">
+        @for (field of softLevel1.controls; track field; let index = $index) {
+            <div [formGroupName]="index" class="table">
+                <div class="row">
+                  <input formControlName="name">
+                </div>
+                <div class="row">
+                    <button type="button" (click)="removeSoftLevel1(index)">Eliminar </button>
+                </div>
+              </div>
+              <br>
+        }
+        </div>
+        <button type="button" class="myButton" (click)="addSoftLevel1()">Agregar Nivel 1</button>
+
+       
+               
+    <button [routerLink]="['/table']" class="cancelButton" >Cancelar</button>
+    <button type="submit">Guardar</button>
+    
+</form>

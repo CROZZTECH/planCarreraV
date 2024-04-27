@@ -1,0 +1,51 @@
+<app-header></app-header>
+
+<button [routerLink]="['/form1']" class="myButton">Agregar nuevo formato</button>
+<a href="{{apiUrl}}/excelExporter" target="_blank" class="myButton">Exportar Plantillas</a>
+<a href="{{apiUrl}}/excelExporterValue" target="_blank" class="myButton">Exportar Resultados</a>
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Trabajo</th>
+        <th>Compañía</th>
+        <th>Entidad</th>
+        
+        <th>Descargar formato</th>
+        <th>Descargar</th>
+        <th>Cargar archivos</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (item of items$ | async; track item) {
+            <tr >
+                <td>{{item.id}}</td>
+                <td>{{item.job}}</td>
+                <td>{{item.company}}</td>
+                <td>{{item.entity}}</td>
+                
+                <td>
+                  <a href="{{apiUrl}}/jobs/excel/{{item.id}}" target="_blank" class="myButton">FORMATOS {{item.id}}</a>
+                  </td>
+                <td>
+                  <select [formControl]="selectedOption" (click)="id = item.id">
+                    <option value="">Selecciono una opción </option>
+                    @for (item of data; track $index) {
+                      <option [value]="item['PERSON_ID']">{{item['PERSON_ID']}}</option>
+                    }
+                  </select>
+                </td> 
+                <td>
+                  <input type="file" (change)="onFileChange($event)" />
+                 
+                </td>
+                <td>
+                  <a [routerLink]="['/form1', item.id]" class="myButton">Editar</a>
+                  &nbsp;
+                  <a href (click)="delete(item.id)" class="myButton">Eliminar</a>
+                </td>
+            </tr>
+            }
+    </tbody>
+  </table>
