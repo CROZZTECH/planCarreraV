@@ -3,7 +3,7 @@
 
 <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
     <label>
-        Trabajo:
+        Cargo:
         <select formControlName="job">
           
             @for (item of options; track item) {
@@ -41,6 +41,8 @@
       </label>
 
       <h3>Competencias técnicas</h3>
+
+      <p>Describa mínimo 3 competencias técnicas que se requieren para la ejecución exitosa de las responsabilidades del cargo, especificando la complejidad o experiencia que se deben evidenciar en cada nivel solicitado.</p>
       
       <div formArrayName="TechniquesLevel1">
         <table  class="table">
@@ -51,16 +53,46 @@
                 <label>
                   Técnica:
                 </label>
-                <input formControlName="name">
+                <textarea formControlName="name" rows="10"></textarea>
               </td>
-              <td >
+             
+              <td>
                 <label>
-                  Nivel:
+                  Nivel Básico
                 </label>
-                <select formControlName="level">
-                  <option value="Nivel 1">Nivel 1</option>
-                  <option value="Nivel 2">Nivel 2</option>
-                  <option value="Nivel 3">Nivel 3</option>
+                <select formControlName="level1">
+                  <option value="Alto">Alto</option>
+                  <option value="Medio alto">Medio alto</option>
+                  <option value="Medio">Medio</option>
+                  <option value="Medio bajo">Medio bajo</option>
+                  <option value="Bajo">Bajo</option>
+                  <option value="No Aplica">No Aplica</option>
+                </select>
+              </td>
+              <td>
+                <label>
+                  Nivel Intermedio
+                </label>
+                <select formControlName="level2">
+                  <option value="Alto">Alto</option>
+                  <option value="Medio alto">Medio alto</option>
+                  <option value="Medio">Medio</option>
+                  <option value="Medio bajo">Medio bajo</option>
+                  <option value="Bajo">Bajo</option>
+                  <option value="No Aplica">No Aplica</option>
+                </select>
+              </td>
+              <td>
+                <label>
+                  Nivel Avanzado
+                </label>
+                <select formControlName="level3">
+                  <option value="Alto">Alto</option>
+                  <option value="Medio alto">Medio alto</option>
+                  <option value="Medio">Medio</option>
+                  <option value="Medio bajo">Medio bajo</option>
+                  <option value="Bajo">Bajo</option>
+                  <option value="No Aplica">No Aplica</option>
                 </select>
               </td>
               <td >
@@ -70,8 +102,8 @@
           
         }
       </table>
-     </div>
-     <button type="button"  class="myButton" (click)="addTechniquesLevel1()">Agregar Nivel </button>
+      </div>
+      <button type="button"  class="myButton" (click)="addTechniquesLevel1()">Agregar competencia técnica </button>
 
     
 
@@ -79,23 +111,255 @@
 
     <h3>Competencias blandas</h3>
 
-  
+    <p>Para cada nivel de experiencia (básico, intermedio y avanzado), selecciona 1 competencia blanda requerida para la ejecución exitosa de las responsabilidades del cargo.</p>
+    
     <div formArrayName="softLevel1">
+      <table class="table">
         @for (field of softLevel1.controls; track field; let index = $index) {
-            <div [formGroupName]="index" class="table">
-                <div class="row">
-                  <input formControlName="name">
-                </div>
-                <div class="row">
+            <tr [formGroupName]="index" >
+                 <td>
+                    <label>
+                      Competencia:
+                    </label>
+                    <select formControlName="name">
+                      <option value="Autodesarrollo">Autodesarrollo</option>
+                      <option value="Calidad de las decisiones">Calidad de las decisiones</option>
+                      <option value="Valora las diferencias">Valora las diferencias</option>
+                      <option value="Cultiva la innovación">Cultiva la innovación</option>
+                      <option value="Optimización de procesos de trabajo">Optimización de procesos de trabajo</option>
+                      <option value="Orientación al cliente">Orientación al cliente</option>
+                      <option value="Planifica y alinea">Planifica y alinea</option>
+                      <option value="Dirección de personas y equipos">Dirección de personas y equipos</option>
+                      <option value="Compromiso, inspiración, integridad y trascendencia">Compromiso, inspiración, integridad y trascendencia</option>
+                      <option value="Habilidad funcional y técnica">Habilidad funcional y técnica</option>
+                      <option value="Aprendizaje tecnológico">Aprendizaje tecnológico</option>
+                      <option value="Priorización">Priorización</option>
+                      <option value="Orientación a la acción">Orientación a la acción</option>
+                      <option value="Negociación">Negociación</option>
+                      <option value="Habilidad comunicacional">Habilidad comunicacional</option>
+                      <option value="Capacidad de escuchar">Capacidad de escuchar</option>
+                      <option value="Delegación">Delegación</option>
+                      <option value="Resolución de problemas">Resolución de problemas</option>
+                    </select>
+                 </td>
+                  <td>
+                    <label>
+                      Nivel Básico
+                    </label>
+                    <select formControlName="level1">
+                      <option value="Experto">Experto</option>
+                      <option value="Inexperto">Inexperto</option>
+                      <option value="Uso excesivo">Uso excesivo</option>
+                      <option value="No Aplica">No Aplica</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label>
+                      Nivel Intermedio
+                    </label>
+                    <select formControlName="level2">
+                      <option value="Experto">Experto</option>
+                      <option value="Inexperto">Inexperto</option>
+                      <option value="Uso excesivo">Uso excesivo</option>
+                      <option value="No Aplica">No Aplica</option>
+                    </select>
+                  </td>
+                  <td>
+                    <label>
+                      Nivel Avanzado
+                    </label>
+                    <select formControlName="level3">
+                      <option value="Experto">Experto</option>
+                      <option value="Inexperto">Inexperto</option>
+                      <option value="Uso excesivo">Uso excesivo</option>
+                      <option value="No Aplica">No Aplica</option>
+                    </select>
+                  </td>
+                  <td>
                     <button type="button" (click)="removeSoftLevel1(index)">Eliminar </button>
-                </div>
-              </div>
-              <br>
+                  </td> 
+              </tr>
         }
-        </div>
-        <button type="button" class="myButton" (click)="addSoftLevel1()">Agregar Nivel 1</button>
+      </table>
+    </div>
+    <button type="button" class="myButton" (click)="addSoftLevel1()">Agregar competencia blanda</button>
 
+
+    <h3>Experiencia laboral en Grupo Argos</h3>
+
+    <p>Para cada nivel de experiencia, menciona la experiencia profesional requerida para la ejecución exitosa de las responsabilidades del cargo</p>
+
+    <div formArrayName="experienceLevel1">
+      <table class="table">
+        @for (field of experienceLevel1.controls; track field; let index = $index) {
+            <tr [formGroupName]="index">
+              <td>
+                <label>
+                  Experiencia laboral:
+                </label>
+                
+              </td>
+              <td>
+                <label>
+                  Nivel Básico
+                </label>
+                <select formControlName="level1">
+                  <option value="Entre 1 y  3 años">Entre 1 y  3 años</option>
+                  <option value="Entre >3 y =5 años">Entre >3 y =5 años</option>
+                  <option value="Más de 5 años">Más de 5 años</option>
+                </select>
+              </td>
+              <td>
+                <label>
+                  Nivel Intermedio
+                </label>
+                <select formControlName="level2">
+                  <option value="Entre 1 y  3 años">Entre 1 y  3 años</option>
+                  <option value="Entre >3 y =5 años">Entre >3 y =5 años</option>
+                  <option value="Más de 5 años">Más de 5 años</option>
+                </select>
+              </td>
+              <td>
+                <label>
+                  Nivel Avanzado
+                </label>
+                <select formControlName="level3">
+                  <option value="Entre 1 y  3 años">Entre 1 y  3 años</option>
+                  <option value="Entre >3 y =5 años">Entre >3 y =5 años</option>
+                  <option value="Más de 5 años">Más de 5 años</option>
+                </select>
+              </td>
+              <td>
+                <button type="button" (click)="removeExperienceLevel1(index)">Eliminar </button>
+              </td>
+            </tr>
+        }
+      </table>
+    </div>
+    <button type="button" class="myButton" (click)="addExperienceLevel1()">Agregar experiencia laboral</button>
+
+
+    <h3>Desempeño</h3>
+
+    <p>Para cada nivel de experiencia, menciona la calificación de desempeño  requerida para la ejecución exitosa de las responsabilidades del cargo</p>
+
+    <div formArrayName="performanceLevel1">
+      <table class="table">
+        @for (field of performanceLevel1.controls; track field; let index = $index) {
+            <tr [formGroupName]="index">
+              <td>
+                <label>
+                  Desempeño:
+                </label>
+              </td>
+              <td>
+                <label>
+                  Nivel Básico
+                </label>
+                <select formControlName="level1">
+                  <option value="Desempeño sobresaliente A9">Desempeño sobresaliente A9</option>
+                  <option value="Desempeño sólido B8">Desempeño sólido B8</option>
+                  <option value="Desempeño sólido B6">Desempeño sólido B6</option>
+                  <option value="Desempeño sólido B5">Desempeño sólido B5</option>
+                  <option value="Cumple parcialmente C7">Cumple parcialmente C7</option>
+                  <option value="Cumple parcialmente C3">Cumple parcialmente C3</option>
+                  <option value="Cumple parcialmente C4">Cumple parcialmente C4</option>
+                  <option value="Cumple parcialmente C2">Cumple parcialmente C2</option>
+                  <option value="Cumple parcialmente C1">Cumple parcialmente C1</option>
+                </select>
+              </td>
+              <td>
+                <label>
+                  Nivel Intermedio
+                </label>
+                <select formControlName="level2">
+                  <option value="Desempeño sobresaliente A9">Desempeño sobresaliente A9</option>
+                  <option value="Desempeño sólido B8">Desempeño sólido B8</option>
+                  <option value="Desempeño sólido B6">Desempeño sólido B6</option>
+                  <option value="Desempeño sólido B5">Desempeño sólido B5</option>
+                  <option value="Cumple parcialmente C7">Cumple parcialmente C7</option>
+                  <option value="Cumple parcialmente C3">Cumple parcialmente C3</option>
+                  <option value="Cumple parcialmente C4">Cumple parcialmente C4</option>
+                  <option value="Cumple parcialmente C2">Cumple parcialmente C2</option>
+                  <option value="Cumple parcialmente C1">Cumple parcialmente C1</option>
+                </select>
+              </td>
+              <td>
+                <label>
+                  Nivel Avanzado
+                </label>
+                <select formControlName="level3">
+                  <option value="Desempeño sobresaliente A9">Desempeño sobresaliente A9</option>
+                  <option value="Desempeño sólido B8">Desempeño sólido B8</option>
+                  <option value="Desempeño sólido B6">Desempeño sólido B6</option>
+                  <option value="Desempeño sólido B5">Desempeño sólido B5</option>
+                  <option value="Cumple parcialmente C7">Cumple parcialmente C7</option>
+                  <option value="Cumple parcialmente C3">Cumple parcialmente C3</option>
+                  <option value="Cumple parcialmente C4">Cumple parcialmente C4</option>
+                  <option value="Cumple parcialmente C2">Cumple parcialmente C2</option>
+                  <option value="Cumple parcialmente C1">Cumple parcialmente C1</option>
+                </select>
+              </td>
+              <td>
+                <button type="button" (click)="removePerformanceLevel1(index)">Eliminar </button>
+              </td>
+            </tr>
+        }
+      </table>
+    </div>
+    <button type="button" class="myButton" (click)="addPerformanceLevel1()">Agregar desempeño</button>
        
+    <h3> Educación formal</h3>
+
+     <p>Para cada nivel de experiencia, menciona la educación formal requerida para la ejecución exitosa de las responsabilidades del cargo</p>
+
+    <div formArrayName="educationLevel1">
+      <table class="table">
+        @for (field of educationsLevel1.controls; track field; let index = $index) {
+            <tr [formGroupName]="index">
+              <td>
+                <label>
+                  Nivel de educación:
+                </label>
+                <textarea formControlName="name" rows="10"></textarea>
+              </td>
+              <td>
+                <label>
+                  Nivel Básico
+                </label>
+                <select formControlName="level1">
+                  <option value="SI">SI</option>
+                  <option value="NO">NO</option>
+                </select>
+              </td>
+              <td>
+                <label>
+                  Nivel Intermedio
+                </label>
+                <select formControlName="level2">
+                  <option value="SI">SI</option>
+                  <option value="NO">NO</option>
+                </select>
+              </td>
+              <td>
+                <label>
+                  Nivel Avanzado
+                </label>
+                <select formControlName="level3">
+                  <option value="SI">SI</option>
+                  <option value="NO">NO</option>
+                </select>
+              </td>
+              <td>
+                <button type="button" (click)="removeEducationLevel1(index)">Eliminar </button>
+              </td>
+            </tr>
+        }
+      </table>
+    </div>
+    <button type="button" class="myButton" (click)="addEducationLevel1()">Agregar educación formal</button>
+
+
                
     <button [routerLink]="['/table']" class="cancelButton" >Cancelar</button>
     <button type="submit">Guardar</button>
