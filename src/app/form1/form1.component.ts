@@ -16,6 +16,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 export class Form1Component {
   options = [
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA101443",
       "POSITION": "LIDER SR CONSOLIDACION Y ANALISIS",
@@ -34,6 +35,7 @@ export class Form1Component {
       "COMPA RATIO": "0,9648794479"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA101303",
       "POSITION": "LIDER FUSIONES Y ADQUISICIONES",
@@ -52,6 +54,7 @@ export class Form1Component {
       "COMPA RATIO": "0,9421593029"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA100079",
       "POSITION": "GERENCIA CONSOLIDACION Y ANALISIS",
@@ -70,6 +73,7 @@ export class Form1Component {
       "COMPA RATIO": "1,39232952"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA100114",
       "POSITION": "GERENCIA PLANEACION FINANCIERA Y RIESGOS",
@@ -88,6 +92,7 @@ export class Form1Component {
       "COMPA RATIO": "1,343517503"
     },
     {
+      "roll": 2,
       "ENTITY": "GRA",
       "POS CODE": "GRA100083",
       "POSITION": "GERENCIA FINANCIERA NEGOCIO INMOBILIARIO",
@@ -106,6 +111,7 @@ export class Form1Component {
       "COMPA RATIO": "0,9224781242"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA100586",
       "POSITION": "VICEPRESIDENCIA ESTRATEGIA Y FINANZAS CORPORATIVAS",
@@ -124,6 +130,7 @@ export class Form1Component {
       "COMPA RATIO": null
     },
     {
+      "roll": 2,
       "ENTITY": "GRA",
       "POS CODE": "GRA100127",
       "POSITION": "GERENCIA ESTRATEGIA FUSIONES Y ADQUISICIONES",
@@ -142,6 +149,7 @@ export class Form1Component {
       "COMPA RATIO": "1,495565902"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA101098",
       "POSITION": "GERENCIA DE ASUNTOS CORPORATIVOS Y DE PRESIDENCIA",
@@ -160,6 +168,7 @@ export class Form1Component {
       "COMPA RATIO": "0,9692052449"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA100591",
       "POSITION": "LIDER SR CONTABLE E IMPUESTOS",
@@ -178,6 +187,7 @@ export class Form1Component {
       "COMPA RATIO": "0,9018655328"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA101280",
       "POSITION": "LIDER SR TESORERIA",
@@ -196,6 +206,7 @@ export class Form1Component {
       "COMPA RATIO": "1,233053419"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA101305",
       "POSITION": "LIDER FUSIONES Y ADQUISICIONES",
@@ -214,6 +225,7 @@ export class Form1Component {
       "COMPA RATIO": null
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA100088",
       "POSITION": "GERENCIA ESTRATEGIA INMOBILIARIA",
@@ -232,6 +244,7 @@ export class Form1Component {
       "COMPA RATIO": "0,9224781242"
     },
     {
+      "roll": 2,
       "ENTITY": "GRA",
       "POS CODE": "GRA100037",
       "POSITION": "LIDER SR PLANEACION FINANCIERA",
@@ -250,6 +263,7 @@ export class Form1Component {
       "COMPA RATIO": "1,147805679"
     },
     {
+      "roll": 2,
       "ENTITY": "GRA",
       "POS CODE": "GRA101344",
       "POSITION": "LIDER PLANEACION FINANCIERA NDU",
@@ -268,6 +282,7 @@ export class Form1Component {
       "COMPA RATIO": "0,8773742001"
     },
     {
+      "roll": 2,
       "ENTITY": "GRA",
       "POS CODE": "GRA100085",
       "POSITION": "DIRECCION FUSIONES Y ADQUISICIONES",
@@ -286,6 +301,7 @@ export class Form1Component {
       "COMPA RATIO": "1,272772897"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA101222",
       "POSITION": "DIRECCION PLANEACION FINANCIERA",
@@ -304,6 +320,7 @@ export class Form1Component {
       "COMPA RATIO": "0,9751413064"
     },
     {
+      "roll": 2,
       "ENTITY": "GRA",
       "POS CODE": "GRA101339",
       "POSITION": "LIDER SR PLANEACION FINANCIERA NDU",
@@ -322,6 +339,7 @@ export class Form1Component {
       "COMPA RATIO": "0,9627239169"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA100051",
       "POSITION": "DIRECCION PROYECTOS Y TESORERIA",
@@ -340,6 +358,7 @@ export class Form1Component {
       "COMPA RATIO": "1,211338995"
     },
     {
+      "roll": 2,
       "ENTITY": "GRA",
       "POS CODE": "GRA100063",
       "POSITION": "LIDER CONSOLIDACION Y ANALISIS",
@@ -358,6 +377,7 @@ export class Form1Component {
       "COMPA RATIO": "1,223975542"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA100126",
       "POSITION": "LIDER CONSOLIDACION Y ANALISIS",
@@ -376,6 +396,7 @@ export class Form1Component {
       "COMPA RATIO": "1,394405641"
     },
     {
+      "roll": 2,
       "ENTITY": "GRA",
       "POS CODE": "GRA100007",
       "POSITION": "DIRECCION CONSOLIDACION Y ANALISIS",
@@ -394,6 +415,7 @@ export class Form1Component {
       "COMPA RATIO": "1,093060872"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA101216",
       "POSITION": "DIRECCION FUSIONES Y ADQUISICIONES",
@@ -412,6 +434,7 @@ export class Form1Component {
       "COMPA RATIO": "1,057572482"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA100029",
       "POSITION": "LIDER CONSOLIDACION Y ANALISIS",
@@ -430,6 +453,7 @@ export class Form1Component {
       "COMPA RATIO": "1,223975542"
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA100032",
       "POSITION": "LIDER CONSOLIDACION Y ANALISIS",
@@ -448,6 +472,7 @@ export class Form1Component {
       "COMPA RATIO": null
     },
     {
+      "roll": 1,
       "ENTITY": "GRA",
       "POS CODE": "GRA100041",
       "POSITION": "LIDER CONSOLIDACION Y ANALISIS",
@@ -468,6 +493,7 @@ export class Form1Component {
   ];
   jobForm: FormGroup = new FormGroup({});
   id: number = 0;
+  idUser:number = 0;
   
   constructor(
     private service: ServiceService,
@@ -498,6 +524,8 @@ export class Form1Component {
       this.jobForm.patchValue(data);
     });
   }
+  let idU = localStorage.getItem('id');
+  this.idUser = parseInt(idU ? idU : '0');
 }
   
   createField(value: string): FormGroup {
@@ -740,4 +768,6 @@ export class Form1Component {
     }
     return null;
   }
+
+  
 }

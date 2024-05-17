@@ -7,9 +7,11 @@
         <select formControlName="job">
           
             @for (item of options; track item) {
+              @if (item.roll >= idUser) {
                 <option [value]="item.POSITION">
                     {{item.POSITION}}
                 </option>
+              }
               }
           
         </select>

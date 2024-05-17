@@ -3,6 +3,7 @@
 <button [routerLink]="['/form1']" class="myButton">Agregar nuevo formato</button>
 <a href="{{apiUrl}}/excelExporter" target="_blank" class="myButton">Exportar Plantillas</a>
 <a href="{{apiUrl}}/excelExporterValue" target="_blank" class="myButton">Exportar Resultados</a>
+<button (click)="logout()" class="myButton logoutButton">Deslogueo</button>
 <table>
     <thead>
       <tr>
@@ -12,8 +13,9 @@
         <th>Entidad</th>
         
         <th>Descargar formato</th>
-        <th>Descargar</th>
+        <th>Calificar</th>
         <th>Cargar archivos</th>
+        <th>Descarga de calificaciones por colaborador</th>
         <th>Acción</th>
       </tr>
     </thead>
@@ -29,10 +31,13 @@
                   <a href="{{apiUrl}}/jobs/excel/{{item.id}}" target="_blank" class="myButton">FORMATOS {{item.id}}</a>
                   </td>
                 <td>
+                  
                   <select [formControl]="selectedOption" (click)="id = item.id">
                     <option value="">Selecciono una opción </option>
-                    @for (item of data; track $index) {
-                      <option [value]="item['PERSON_ID']">{{item['PERSON_ID']}}</option>
+                    @for (item1 of data; track $index) {
+                      @if (item1.POSITION === item.job) {
+                      <option [value]="item1['PERSON_ID']">{{item1['PERSON_ID']}} - {{item1['EMP_FIRST_NAME']}} {{item1['EMP_MID_NAME']}} {{item1['EMP_LAST_NAME']}} {{item1['EMP_SECOND_LAST_NAME']}}</option>
+                      }
                     }
                   </select>
                 </td> 
@@ -40,6 +45,22 @@
                   <input type="file" (change)="onFileChange($event)" />
                  
                 </td>
+                <td>
+                  
+                  <select [formControl]="selectedOptionId" (click)="id = item.id">
+                    <option value="">Selecciono una opción </option>
+                    @for (item1 of data; track $index) {
+                      @if (item1.POSITION === item.job) {
+                      <option [value]="item1['PERSON_ID']">{{item1['PERSON_ID']}} - {{item1['EMP_FIRST_NAME']}} {{item1['EMP_MID_NAME']}} {{item1['EMP_LAST_NAME']}} {{item1['EMP_SECOND_LAST_NAME']}}</option>
+                      }
+                    }
+                  </select>
+                  
+                  @if (selectedOptionId.value){
+                    <a href="{{apiUrl}}/jobs/excelId/{{item.id}}/{{selectedOptionId.value}}"  class="button-style">Descarga archivos</a>
+                  }
+                  
+                </td> 
                 <td>
                   <a [routerLink]="['/form1', item.id]" class="myButton">Editar</a>
                   &nbsp;
