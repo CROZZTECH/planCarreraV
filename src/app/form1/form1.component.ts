@@ -509,6 +509,8 @@ export class Form1Component {
       experienceLevel1: this.fb.array([]),
       performanceLevel1: this.fb.array([]),
       educationLevel1: this.fb.array([]),
+      officeAutomationLevel1: this.fb.array([]),
+      engleLevel1: this.fb.array([]),
   });
   this.setSelectValue();
   const id = this.route.snapshot.paramMap.get('id');
@@ -521,6 +523,8 @@ export class Form1Component {
       this.arrayExperienceLevel1(data.experienceLevel1);
       this.arrayPerformanceLevel1(data.performanceLevel1);
       this.arrayEducationLevel1(data.educationLevel1);
+      this.arrayofficeAutomationLevel1(data.officeAutomationLevel1);
+      this.arrayEngleLevel1(data.engleLevel1);
       this.jobForm.patchValue(data);
     });
   }
@@ -696,6 +700,73 @@ export class Form1Component {
   removeEducationLevel1(index: number) {
     this.educationsLevel1.removeAt(index);
   }
+
+
+
+
+   //-----------------------------------
+
+   get officeAutomationLevel1() {
+    return this.jobForm.get('officeAutomationLevel1') as FormArray;
+  }
+
+  arrayofficeAutomationLevel1(data: any[]) {
+    data.map((item: { name: string, level1: string, level2: string, level3: string }) => {
+
+      this.officeAutomationLevel1.push(this.fb.group(
+        {
+          name: new FormControl(item.name), 
+          level1 : new FormControl(item.level1),
+          level2 : new FormControl(item.level2),
+          level3 : new FormControl(item.level3),
+          
+        }
+      ));
+
+    });
+  }
+
+  addOfficeAutomationLevel1() {
+    this.officeAutomationLevel1.push(this.createField(''));
+  }
+
+  removeOfficeAutomationLevel1(index: number) {
+    this.officeAutomationLevel1.removeAt(index);
+  }
+
+
+
+
+
+     //-----------------------------------
+
+     get engleLevel1() {
+      return this.jobForm.get('engleLevel1') as FormArray;
+    }
+  
+    arrayEngleLevel1(data: any[]) {
+      data.map((item: { name: string, level1: string, level2: string, level3: string }) => {
+  
+        this.engleLevel1.push(this.fb.group(
+          {
+            name: new FormControl(item.name), 
+            level1 : new FormControl(item.level1),
+            level2 : new FormControl(item.level2),
+            level3 : new FormControl(item.level3),
+            
+          }
+        ));
+  
+      });
+    }
+  
+    addEngleLevel1() {
+      this.engleLevel1.push(this.createField(''));
+    }
+  
+    removeEngleLevel1(index: number) {
+      this.engleLevel1.removeAt(index);
+    }
   
 
   onSubmit() {
@@ -703,11 +774,13 @@ export class Form1Component {
     let formValue = this.jobForm.value;
     formValue.id = this.id;
     // Set default values if they don't exist
-    formValue.TechniquesLevel1  = formValue.TechniquesLevel1 || [];
-    formValue.softLevel1        = formValue.softLevel1 || [];
-    formValue.experienceLevel1  = formValue.experienceLevel1 || [];
-    formValue.performanceLevel1 = formValue.performanceLevel1 || [];
-    formValue.educationLevel1   = formValue.educationLevel1 || [];
+    formValue.TechniquesLevel1       = formValue.TechniquesLevel1 || [];
+    formValue.softLevel1             = formValue.softLevel1 || [];
+    formValue.experienceLevel1       = formValue.experienceLevel1 || [];
+    formValue.performanceLevel1      = formValue.performanceLevel1 || [];
+    formValue.educationLevel1        = formValue.educationLevel1 || [];
+    formValue.officeAutomationLevel1 = formValue.officeAutomationLevel1 || [];
+    formValue.engleLevel1            = formValue.engleLevel1 || [];
 
     if(formValue.id != null && formValue.id != '' && formValue.id != 0){
 
