@@ -489,17 +489,36 @@ export class Form1Component {
       "EMP SECOND LAST NAME": "POSADA",
       "EMP HIRE DATE": "08/01/2015",
       "COMPA RATIO": "1,223975542"
+    },
+    {
+      "roll": 1,
+      "ENTITY": "GRA",
+      "POS CODE": "GRA100041",
+      "POSITION": "LIDER GESTION INTEGRAL DE RIESGOS",
+      "POS EMP GROUP": "EMPLOYEE",
+      "COUNTRY": "COL",
+      "COMPANY CODE": "GRA-CO01",
+      "COMPANY": "GRUPO ARGOS S.A.",
+      "GRADE": "GRADO 09",
+      "JOB LEVEL": "SPECIALISTS",
+      "PERSON ID": 2000033077,
+      "EMP FIRST NAME": "DANIEL",
+      "EMP MID NAME": "ESTEBAN",
+      "EMP LAST NAME": "GALLEGO",
+      "EMP SECOND LAST NAME": "YEPEZ",
+      "EMP HIRE DATE": "08/01/2015",
+      "COMPA RATIO": "1,223975542"
     }
   ];
   jobForm: FormGroup = new FormGroup({});
   id: number = 0;
   idUser:number = 0;
-  
+
   constructor(
     private service: ServiceService,
     private router: Router,
     private fb: FormBuilder,
-    private route: ActivatedRoute) { 
+    private route: ActivatedRoute) {
     this.jobForm = this.fb.group({
       job : new FormControl(''),
       company : new FormControl(''),
@@ -531,7 +550,7 @@ export class Form1Component {
   let idU = localStorage.getItem('id');
   this.idUser = parseInt(idU ? idU : '0');
 }
-  
+
   createField(value: string): FormGroup {
     return this.fb.group({
       name: new FormControl(''),
@@ -542,21 +561,21 @@ export class Form1Component {
   }
 
 
-  
+
   get TechniquesLevel1() {
     return this.jobForm.get('TechniquesLevel1') as FormArray;
   }
 
-  
-  
+
+
   addTechniquesLevel1() {
     this.TechniquesLevel1.push(this.createField('Bajo'));
   }
-  
+
   removeTechniquesLevel1(index: number) {
     this.TechniquesLevel1.removeAt(index);
   }
-  
+
 
 
   arrayTechniquesLevel1(data: any[]) {
@@ -564,7 +583,7 @@ export class Form1Component {
 
       this.TechniquesLevel1.push(this.fb.group(
         {
-          name   : new FormControl(item.name), 
+          name   : new FormControl(item.name),
           level1 : new FormControl(item.level1),
           level2 : new FormControl(item.level2),
           level3 : new FormControl(item.level3),
@@ -573,9 +592,9 @@ export class Form1Component {
 
     });
   }
-  
 
-  
+
+
   //-----------------------------------
 
 
@@ -588,11 +607,11 @@ export class Form1Component {
 
       this.softLevel1.push(this.fb.group(
         {
-          name: new FormControl(item.name), 
+          name: new FormControl(item.name),
           level1 : new FormControl(item.level1),
           level2 : new FormControl(item.level2),
           level3 : new FormControl(item.level3),
-          
+
         }
       ));
 
@@ -620,11 +639,11 @@ export class Form1Component {
 
       this.experienceLevel1.push(this.fb.group(
         {
-          name: new FormControl(item.name), 
+          name: new FormControl(item.name),
           level1 : new FormControl(item.level1),
           level2 : new FormControl(item.level2),
           level3 : new FormControl(item.level3),
-          
+
         }
       ));
 
@@ -652,11 +671,11 @@ export class Form1Component {
 
       this.performanceLevel1.push(this.fb.group(
         {
-          name: new FormControl(item.name), 
+          name: new FormControl(item.name),
           level1 : new FormControl(item.level1),
           level2 : new FormControl(item.level2),
           level3 : new FormControl(item.level3),
-          
+
         }
       ));
 
@@ -682,11 +701,11 @@ export class Form1Component {
 
       this.educationsLevel1.push(this.fb.group(
         {
-          name: new FormControl(item.name), 
+          name: new FormControl(item.name),
           level1 : new FormControl(item.level1),
           level2 : new FormControl(item.level2),
           level3 : new FormControl(item.level3),
-          
+
         }
       ));
 
@@ -715,11 +734,11 @@ export class Form1Component {
 
       this.officeAutomationLevel1.push(this.fb.group(
         {
-          name: new FormControl(item.name), 
+          name: new FormControl(item.name),
           level1 : new FormControl(item.level1),
           level2 : new FormControl(item.level2),
           level3 : new FormControl(item.level3),
-          
+
         }
       ));
 
@@ -743,31 +762,31 @@ export class Form1Component {
      get engleLevel1() {
       return this.jobForm.get('engleLevel1') as FormArray;
     }
-  
+
     arrayEngleLevel1(data: any[]) {
       data.map((item: { name: string, level1: string, level2: string, level3: string }) => {
-  
+
         this.engleLevel1.push(this.fb.group(
           {
-            name: new FormControl(item.name), 
+            name: new FormControl(item.name),
             level1 : new FormControl(item.level1),
             level2 : new FormControl(item.level2),
             level3 : new FormControl(item.level3),
-            
+
           }
         ));
-  
+
       });
     }
-  
+
     addEngleLevel1() {
       this.engleLevel1.push(this.createField(''));
     }
-  
+
     removeEngleLevel1(index: number) {
       this.engleLevel1.removeAt(index);
     }
-  
+
 
   onSubmit() {
     console.warn(this.jobForm.value);
@@ -803,7 +822,7 @@ export class Form1Component {
       this.service.postJob(formValue).subscribe({
         next: (response:any) => {
           console.log(response);
-          
+
           this.router.navigate(['/table']);
         },
         error: (error) => {
@@ -811,7 +830,7 @@ export class Form1Component {
         }
       });
 
-    }    
+    }
   }
 
   setSelectValue() {
@@ -821,8 +840,8 @@ export class Form1Component {
         const selectedJob = jobControl.value;
         jobControl.valueChanges.subscribe((selectedJob:string) => {
           let selectedOptions = this.options.find(option => option.POSITION === selectedJob);
-          
-          
+
+
           if (selectedOptions) {
             this.jobForm.patchValue({
               company: selectedOptions.COMPANY,
@@ -842,5 +861,5 @@ export class Form1Component {
     return null;
   }
 
-  
+
 }

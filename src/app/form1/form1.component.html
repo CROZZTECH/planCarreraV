@@ -1,6 +1,7 @@
 
 <app-header></app-header>
 
+
 <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
     <h3>
       El presente formulario tiene como finalidad obtener información específica sobre los requisitos de una posición, en los 3 niveles de desarrollo definidos en el Programa Plan Carrera – fase 1: básico, intermedio y avanzado.   La selección debe realizarse considerando cada nivel, no considere criterios acumulativos de un nivel a otro.
@@ -8,7 +9,7 @@
     <label>
         Cargo:
         <select formControlName="job">
-          
+
             @for (item of options; track item) {
               @if (item.roll >= idUser) {
                 <option [value]="item.POSITION">
@@ -16,7 +17,7 @@
                 </option>
               }
               }
-          
+
         </select>
       </label>
 
@@ -48,11 +49,11 @@
       <h3>Competencias técnicas</h3>
 
       <p>Describa mínimo 3 competencias técnicas que se requieren para la ejecución exitosa de las responsabilidades del cargo, especificando la complejidad o experiencia que se deben evidenciar en cada nivel solicitado.</p>
-      
+
       <div formArrayName="TechniquesLevel1">
         <table  class="table">
         @for (field of TechniquesLevel1.controls; track field; let index = $index) {
-          
+
             <tr  [formGroupName]="index">
               <td >
                 <label>
@@ -60,7 +61,7 @@
                 </label>
                 <textarea formControlName="name" rows="10"></textarea>
               </td>
-             
+
               <td>
                 <label>
                   Nivel Básico
@@ -101,23 +102,23 @@
                 </select>
               </td>
               <td >
-                <button type="button" (click)="removeTechniquesLevel1(index)">Eliminar </button>
+                <button type="button" class="delete" (click)="removeTechniquesLevel1(index)">Eliminar </button>
               </td>
             </tr>
-          
+
         }
       </table>
       </div>
       <button type="button"  class="myButton" (click)="addTechniquesLevel1()">Agregar competencia técnica </button>
 
-    
 
-     
+
+
 
     <h3>Competencias blandas</h3>
 
-    <p>Para cada nivel de experiencia (básico, intermedio y avanzado), selecciona 1 competencia blanda requerida para la ejecución exitosa de las responsabilidades del cargo.</p>
-    
+    <p>Para cada nivel de experiencia (básico, intermedio y avanzado), selecciona las  competencias blandas requeridas para la ejecución exitosa de las responsabilidades del cargo.</p>
+
     <div formArrayName="softLevel1">
       <table class="table">
         @for (field of softLevel1.controls; track field; let index = $index) {
@@ -200,23 +201,23 @@
                     </select>
                   </td>
                   <td>
-                    <button type="button" (click)="removeSoftLevel1(index)">Eliminar </button>
-                  </td> 
+                    <button type="button" class="delete" (click)="removeSoftLevel1(index)">Eliminar </button>
+                  </td>
               </tr>
         }
       </table>
     </div>
-    <button type="button" class="myButton" (click)="addSoftLevel1()">Agregar competencia blanda</button>
+    <button type="button" class="myButton" (click)="addSoftLevel1()">Agregar Competencia blanda</button>
 
 
     <h3>Competencias técnicas de Ofimática</h3>
 
     <p>Describa el principal programa de Ofimática que se requiere para la ejecución exitosa de las responsabilidades del cargo, especificando la complejidad o experiencia que se deben evidenciar en cada nivel solicitado.</p>
-    
+
     <div formArrayName="officeAutomationLevel1">
       <table  class="table">
       @for (field of officeAutomationLevel1.controls; track field; let index = $index) {
-        
+
           <tr  [formGroupName]="index">
             <td >
               <label>
@@ -224,7 +225,7 @@
               </label>
               <textarea formControlName="name" rows="10"></textarea>
             </td>
-           
+
             <td>
               <label>
                 Nivel Básico
@@ -265,14 +266,14 @@
               </select>
             </td>
             <td >
-              <button type="button" (click)="removeOfficeAutomationLevel1(index)">Eliminar </button>
+              <button type="button" class="delete" (click)="removeOfficeAutomationLevel1(index)">Eliminar </button>
             </td>
           </tr>
-        
+
       }
     </table>
     </div>
-    <button type="button"  class="myButton" (click)="addOfficeAutomationLevel1()">Agregar competencia técnica Ofimática </button>
+    <button type="button"  class="myButton" (click)="addOfficeAutomationLevel1()">Agregar Competencia técnica ofimática </button>
 
 
     <h3> Educación formal</h3>
@@ -317,13 +318,13 @@
                </select>
              </td>
              <td>
-               <button type="button" (click)="removeEducationLevel1(index)">Eliminar </button>
+               <button type="button" class="delete" (click)="removeEducationLevel1(index)">Eliminar </button>
              </td>
            </tr>
        }
      </table>
    </div>
-   <button type="button" class="myButton" (click)="addEducationLevel1()">Agregar educación formal</button>
+   <button type="button" class="myButton" (click)="addEducationLevel1()">Agregar Educación formal</button>
 
 
 
@@ -331,9 +332,9 @@
 
 
 
-   <h3> Inglés</h3>
+   <h3> Idioma</h3>
 
-   <p>Describa según el marco común europeo el nivel de inglés que se requiere para la ejecución exitosa de las responsabilidades del cargo</p>
+   <p>Describa según el Marco Común Europeo (MCE) el idioma y el nivel que se requiere para la ejecución exitosa de las responsabilidades del cargo</p>
 
   <div formArrayName="engleLevel1">
     <table class="table">
@@ -367,7 +368,7 @@
                 <option value="Francés C2">Francés C2</option>
               </select>
 
-              
+
             </td>
             <td>
               <label>
@@ -397,13 +398,13 @@
               </select>
             </td>
             <td>
-              <button type="button" (click)="removeEngleLevel1(index)">Eliminar </button>
+              <button type="button" class="delete" (click)="removeEngleLevel1(index)">Eliminar </button>
             </td>
           </tr>
       }
     </table>
   </div>
-  <button type="button" class="myButton" (click)="addEngleLevel1()">Agregar educación formal</button>
+  <button type="button" class="myButton" (click)="addEngleLevel1()">Agregar Idioma</button>
 
 
 
@@ -417,12 +418,12 @@
 
 
 
-   
 
 
 
 
-    <!-- 
+
+    <!--
     <h3>Desempeño</h3>
 
     <p>Para cada nivel de experiencia, menciona la calificación de desempeño  requerida para la ejecución exitosa de las responsabilidades del cargo</p>
@@ -495,7 +496,7 @@
                 <label>
                   Experiencia laboral:
                 </label>
-                
+
               </td>
               <td>
                 <label>
@@ -538,11 +539,11 @@
 
 
     -->
-      
 
 
-               
+
+
     <button [routerLink]="['/table']" class="cancelButton" >Cancelar</button>
     <button type="submit">Guardar</button>
-    
+
 </form>

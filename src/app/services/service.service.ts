@@ -33,6 +33,18 @@ export class ServiceService {
     return this.http.post(`${environment.apiUrl}/uploadFile`, file);
   }
 
+  uploadInfFile(file: any) {
+    return this.http.post(`${environment.apiUrl}/uploadInfFile`, file);
+  }
+
+  getListFiles(file: string) {
+    return this.http.get(`${environment.apiUrl}/list-files?folder_path=${file}`);
+  }
+
+  uploadUpdateForma(file: any) {
+    return this.http.post(`${environment.apiUrl}/jobs/excelForma`, file);
+  }
+
   deleteJob(id: number) {
     return this.http.delete(`${environment.apiUrl}/jobs/${id}`);
   }

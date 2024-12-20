@@ -5,22 +5,43 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-  
+
   header h1 {
     margin: 0;
   }
-  
+
   nav ul {
     list-style-type: none;
     padding: 0;
     display: flex;
   }
-  
+
   nav ul li {
     margin-left: 15px;
   }
-  
+
   nav ul li a {
     color: #333;
     text-decoration: none;
+  }
+
+  .logoutButton {
+    position: absolute;
+    right: 0;
+  }
+
+  .myButton {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #032050;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+    margin-bottom: 10px;
   }

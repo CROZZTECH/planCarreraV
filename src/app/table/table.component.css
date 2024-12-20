@@ -2,17 +2,17 @@ table {
     width: 100%;
     border-collapse: collapse;
   }
-  
+
   thead {
     background-color: #f8f8f8;
   }
-  
+
   th, td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
   }
-  
+
   tr:nth-child(even) {
     background-color: #f2f2f2;
   }
@@ -29,8 +29,10 @@ table {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-right: 10px;
+    margin-bottom: 10px;
   }
-  
+
   .myButton:hover {
     background-color: #032863;
   }
@@ -46,7 +48,7 @@ table {
     text-align: center;
     transition: background-color 0.3s ease;
   }
-  
+
   .button-style:hover {
     background-color: #032863;
   }
@@ -54,4 +56,30 @@ table {
   .logoutButton {
     position: absolute;
     right: 0;
+  }
+
+
+  .table-container {
+    max-height: auto; /* Ajusta la altura máxima según sea necesario */
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+    overflow-x: auto; /* Permite el desplazamiento horizontal si es necesario */
+    border: 1px solid #ddd; /* Opcional: añade un borde para distinguir el contenedor */
+  }
+
+
+  .same-size-button {
+    display: inline-block; /* Asegura que el ancho y alto se apliquen correctamente */
+    width: 100px; /* Ajusta este valor según sea necesario */
+    text-align: center; /* Centra el texto dentro del botón */
+    padding: 10px; /* Añade espacio dentro del botón */
+    background-color: #032050; /* Color de fondo */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    border-radius: 4px; /* Bordes redondeados */
+    margin: 5px; /* Añade un margen alrededor del botón */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+  }
+
+  .same-size-button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
   }

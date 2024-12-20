@@ -1,9 +1,13 @@
 <app-header></app-header>
 
+<h1>Plan Carrera Grupo Argos</h1>
+
 <button [routerLink]="['/form1']" class="myButton">Agregar nuevo formato</button>
 <a href="{{apiUrl}}/excelExporter" target="_blank" class="myButton">Exportar Plantillas</a>
 <a href="{{apiUrl}}/excelExporterValue" target="_blank" class="myButton">Exportar Resultados</a>
-<button (click)="logout()" class="myButton logoutButton">Deslogueo</button>
+
+
+<div class="table-container">
 <table>
     <thead>
       <tr>
@@ -11,11 +15,14 @@
         <th>Cargo</th>
         <th>Compañía</th>
         <th>Entidad</th>
-        
-        <th>Descargar formato</th>
-        <th>Calificar</th>
-        <th>Cargar archivos</th>
+
+        <th>Descargar formato del cargo</th>
+        <th>Actualización de formato del cargo</th>
+        <th>Calificar colaborador</th>
+        <th>Cargar calificaciones por colaborador</th>
         <th>Descarga de calificaciones por colaborador</th>
+
+        <th>Custodia de Información</th>
         <th>Acción</th>
       </tr>
     </thead>
@@ -26,12 +33,18 @@
                 <td>{{item.job}}</td>
                 <td>{{item.company}}</td>
                 <td>{{item.entity}}</td>
-                
+
                 <td>
                   <a href="{{apiUrl}}/jobs/excel/{{item.id}}" target="_blank" class="myButton">FORMATOS {{item.id}}</a>
                   </td>
+
+                  <td>
+                    <input type="file"  (change)="updateForma($event, item.id)">
+                  </td>
+
                 <td>
-                  
+
+
                   <select [formControl]="selectedOption" (click)="id = item.id">
                     <option value="">Selecciono una opción </option>
                     @for (item1 of data; track $index) {
@@ -40,13 +53,13 @@
                       }
                     }
                   </select>
-                </td> 
-                <td>
-                  <input type="file" (change)="onFileChange($event)" />
-                 
                 </td>
                 <td>
-                  
+                  <input type="file" (change)="onFileChange($event)" />
+
+                </td>
+                <td>
+
                   <select [formControl]="selectedOptionId" (click)="id = item.id">
                     <option value="">Selecciono una opción </option>
                     @for (item1 of data; track $index) {
@@ -55,18 +68,52 @@
                       }
                     }
                   </select>
-                  
+
                   @if (selectedOptionId.value){
                     <a href="{{apiUrl}}/jobs/excelId/{{item.id}}/{{selectedOptionId.value}}"  class="button-style">Descarga archivos</a>
                   }
-                  
-                </td> 
+
+                </td>
+
                 <td>
-                  <a [routerLink]="['/form1', item.id]" class="myButton">Editar</a>
+                  <select [formControl]="selectedOptionId" (click)="id = item.id" (change)="onSelectChange(selectedOptionId.value || '', item.id)">
+                    <option value="">Selecciono una opción </option>
+                    @for (item1 of data; track $index) {
+                      @if (item1.POSITION === item.job) {
+                      <option [value]="item1['PERSON_ID']">{{item1['PERSON_ID']}} - {{item1['EMP_FIRST_NAME']}} {{item1['EMP_MID_NAME']}} {{item1['EMP_LAST_NAME']}} {{item1['EMP_SECOND_LAST_NAME']}}</option>
+                      }
+                    }
+                  </select>
+                  @if (selectedOptionId.value){
+                  <input type="file" (change)="onFileInfChange($event)" />
+                  }
+                  @if (files?.urls?.length > 0 && item.id === files?.id) {
+                  <div >
+                    <h3>Archivos disponibles para descargar:</h3>
+                    <ul>
+
+                        @for (file of files?.urls; track $index) {
+                            @if (selectedOptionInf === file.id ) {
+                              <li >
+                            <a [href]="file.url" target="_blank">{{ file.name }}</a>
+                            </li>
+                            <br>
+                            }
+                        }
+
+                    </ul>
+                  </div>
+                }
+                </td>
+
+                <td>
+                  <a [routerLink]="['/form1', item.id]" class="myButton same-size-button">Editar</a>
                   &nbsp;
-                  <a href (click)="delete(item.id)" class="myButton">Eliminar</a>
+                  <a href (click)="delete(item.id)" class="myButton same-size-button">Eliminar</a>
                 </td>
             </tr>
             }
     </tbody>
   </table>
+</div>
+
